@@ -1,3 +1,4 @@
+// 
 const monthYear = document.getElementById("monthYear");
 const calendarDays = document.getElementById("calendarDays");
 const prevMonthBtn = document.getElementById("prevMonth");
@@ -40,7 +41,6 @@ function renderCalendar() {
         dayCell.innerText = day;
 
         let dateKey = `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${day}`;
-
         let currentDateObj = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
 
         // Highlight today's date
@@ -50,9 +50,9 @@ function renderCalendar() {
             dayCell.classList.add("today");
         }
 
-        // If tasks exist for this date, highlight it
-        if (tasks[dateKey] && tasks[dateKey].length > 0) {
-            dayCell.style.backgroundColor = "#FFD700"; // Highlight with gold color
+        // If tasks exist for this date and are completed, highlight it
+        if (tasks[dateKey] && tasks[dateKey].completed) {
+            dayCell.style.backgroundColor = "#6deb4e"; // Gold color for completed tasks
         }
 
         // Disable future dates
@@ -95,16 +95,19 @@ function openTaskModal(dateKey) {
 // Mark Task as Completed
 function markTaskCompleted(dateKey, task) {
     if (!tasks[dateKey]) tasks[dateKey] = { completedTasks: [] };
-    
+
     if (!tasks[dateKey].completedTasks.includes(task)) {
         tasks[dateKey].completedTasks.push(task);
     } else {
         tasks[dateKey].completedTasks = tasks[dateKey].completedTasks.filter(t => t !== task);
     }
 
+    // Mark the task as completed only if all tasks for the day are checked
     tasks[dateKey].completed = tasks[dateKey].completedTasks.length === dailyTasks.length;
+
     localStorage.setItem("tasks", JSON.stringify(tasks));
-    renderCalendar();
+    
+    renderCalendar(); // Ensure the color updates after task completion
 }
 
 // Add Daily Task
@@ -121,11 +124,22 @@ addTaskBtn.addEventListener("click", () => {
 // Render Daily Tasks
 function renderDailyTasks() {
     taskList.innerHTML = dailyTasks.map(task => `<li>${task}</li>`).join("");
+    
 }
 
+// Close modal
 closeModal.addEventListener("click", () => taskModal.style.display = "none");
-prevMonthBtn.addEventListener("click", () => { currentDate.setMonth(currentDate.getMonth() - 1); renderCalendar(); });
-nextMonthBtn.addEventListener("click", () => { currentDate.setMonth(currentDate.getMonth() + 1); renderCalendar(); });
 
+// Navigation between months
+prevMonthBtn.addEventListener("click", () => { 
+    currentDate.setMonth(currentDate.getMonth() - 1); 
+    renderCalendar(); 
+});
+nextMonthBtn.addEventListener("click", () => { 
+    currentDate.setMonth(currentDate.getMonth() + 1); 
+    renderCalendar(); 
+});
+
+// Initial Render
 renderCalendar();
 renderDailyTasks();

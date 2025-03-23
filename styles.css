@@ -76,7 +76,7 @@ h1, h2 {
 }
 
 .day.completed {
-    background: gold;
+    background: rgb(55, 190, 21);
 }
 
 /* Modal Styling */
