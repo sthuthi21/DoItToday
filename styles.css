@@ -107,3 +107,12 @@ h1, h2 {
     justify-content: space-between;
     padding: 5px;
 }
+
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
