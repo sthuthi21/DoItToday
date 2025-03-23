@@ -117,3 +117,12 @@ h1, h2 {
     pointer-events: none; /* Prevent clicking */
     opacity: 0.5;
 }
+
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
