@@ -3,40 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendar</title>
+    <title>Habit Tracker</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="calendar">
-        <div class="calendar-header">
-            <button id="prevMonth">◀</button>
-            <h2 id="monthYear"></h2>
-            <button id="nextMonth">▶</button>
-        </div>
-        <div id="calendar">
-            <div id="weekDays">
-                <div>Sun</div>
-                <div>Mon</div>
-                <div>Tue</div>
-                <div>Wed</div>
-                <div>Thu</div>
-                <div>Fri</div>
-                <div>Sat</div>
-            </div>
-            <br/>
-            <div id="calendarDays"></div>
-        </div>
+
+    <div class="container">
+        <h1>Habit Tracker</h1>
+        <h2>Daily Tasks</h2>
         
+        <!-- Task List Section -->
+        <div id="taskSection">
+            <input type="text" id="taskInput" placeholder="Enter a daily task">
+            <button id="addTaskBtn">Add Task</button>
+            <ul id="taskList"></ul> <!-- Task list displayed here -->
+        </div>
+
+        <!-- Calendar Section -->
+        <div class="calendar">
+            <div class="calendar-header">
+                <button id="prevMonth">&lt;</button>
+                <h2 id="monthYear"></h2>
+                <button id="nextMonth">&gt;</button>
+            </div>
+            <div id="calendarDays" class="calendar-grid"></div>
+        </div>
     </div>
 
-    <!-- Task Modal -->
+    <!-- Task Modal (for viewing and marking tasks) -->
     <div id="taskModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h3 id="modalDate"></h3>
-            <input type="text" id="taskInput" placeholder="Enter task...">
-            <button id="addTaskBtn">Add Task</button>
-            <ul id="taskList"></ul>
+            <h2 id="modalDate"></h2>
+            <ul id="modalTaskList"></ul> <!-- Tasks for the selected day -->
         </div>
     </div>
 
