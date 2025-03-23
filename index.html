@@ -7,35 +7,37 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
     <div class="container">
         <h1>Habit Tracker</h1>
-        <h2>Daily Tasks</h2>
-        
-        <!-- Task List Section -->
-        <div id="taskSection">
-            <input type="text" id="taskInput" placeholder="Enter a daily task">
-            <button id="addTaskBtn">Add Task</button>
-            <ul id="taskList"></ul> <!-- Task list displayed here -->
-        </div>
-
-        <!-- Calendar Section -->
-        <div class="calendar">
-            <div class="calendar-header">
-                <button id="prevMonth">&lt;</button>
-                <h2 id="monthYear"></h2>
-                <button id="nextMonth">&gt;</button>
+        <div class="flex-task">
+            <div class="taskss">
+                <h2>Daily Tasks</h2>
+                <!-- Task List Section -->
+                <div id="taskSection">
+                    <input type="text" id="taskInput" placeholder="Enter a daily task">
+                    <button id="addTaskBtn">Add Task</button>
+                    <ul id="taskList"></ul> <!-- Task list displayed here -->
+                </div>
             </div>
-            <div id="calendarDays" class="calendar-grid"></div>
+    
+            <!-- Calendar Section -->
+            <div class="calendar">
+                <div class="calendar-header">
+                    <button id="prevMonth">&lt;</button>
+                    <h2 id="monthYear"></h2>
+                    <button id="nextMonth">&gt;</button>
+                </div>
+                <div id="calendarDays" class="calendar-grid"></div>
+            </div>
         </div>
-    </div>
-
-    <!-- Task Modal (for viewing and marking tasks) -->
-    <div id="taskModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2 id="modalDate"></h2>
-            <ul id="modalTaskList"></ul> <!-- Tasks for the selected day -->
+    
+        <!-- Task Modal (for viewing and marking tasks) -->
+        <div id="taskModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 id="modalDate"></h2>
+                <ul id="modalTaskList"></ul> <!-- Tasks for the selected day -->
+            </div>
         </div>
     </div>
 

@@ -21,28 +21,47 @@ let dailyTasks = JSON.parse(localStorage.getItem("dailyTasks")) || []; // Stores
 function renderCalendar() {
     const firstDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
     const lastDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
-    
+    const today = new Date(); // Get today's date
+
     monthYear.innerText = firstDayOfMonth.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+
     calendarDays.innerHTML = "";
 
-    // Empty slots before first day
+    // Add empty cells for previous month days
     for (let i = 0; i < firstDayOfMonth.getDay(); i++) {
         let emptyCell = document.createElement("div");
         calendarDays.appendChild(emptyCell);
     }
 
-    // Actual days
+    // Add actual days of the month
     for (let day = 1; day <= lastDayOfMonth.getDate(); day++) {
         let dayCell = document.createElement("div");
         dayCell.classList.add("day");
         dayCell.innerText = day;
+
         let dateKey = `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${day}`;
 
-        if (tasks[dateKey]?.completed) {
-            dayCell.classList.add("completed");
+        let currentDateObj = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
+
+        // Highlight today's date
+        if (day === today.getDate() &&
+            currentDate.getMonth() === today.getMonth() &&
+            currentDate.getFullYear() === today.getFullYear()) {
+            dayCell.classList.add("today");
         }
 
-        dayCell.addEventListener("click", () => openTaskModal(dateKey));
+        // If tasks exist for this date, highlight it
+        if (tasks[dateKey] && tasks[dateKey].length > 0) {
+            dayCell.style.backgroundColor = "#FFD700"; // Highlight with gold color
+        }
+
+        // Disable future dates
+        if (currentDateObj > today) {
+            dayCell.classList.add("disabled");
+        } else {
+            dayCell.addEventListener("click", () => openTaskModal(dateKey));
+        }
+
         calendarDays.appendChild(dayCell);
     }
 }

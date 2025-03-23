@@ -8,6 +8,10 @@ body {
     max-width: 500px;
     margin: auto;
     padding: 20px;
+    
+}
+.flex-task{
+    display: flex;
 }
 
 h1, h2 {
@@ -106,4 +110,10 @@ h1, h2 {
     align-items: center;
     justify-content: space-between;
     padding: 5px;
+}
+
+.disabled {
+    color: #ccc; /* Light gray text */
+    pointer-events: none; /* Prevent clicking */
+    opacity: 0.5;
 }
