@@ -64,7 +64,7 @@ function openTaskModal(dateKey) {
         tasks[dateKey].forEach(task => {
             let task1 = document.createElement("div");
             task1.innerText = task;
-            let close
+            let doneBtn=document.createElement("button");
             taskList.appendChild(task1);
         });
     }
@@ -103,6 +103,8 @@ nextMonthBtn.addEventListener("click", () => {
     currentDate.setMonth(currentDate.getMonth() + 1);
     renderCalendar();
 });
+//doneBtn.addEventListener("click",()=>{
 
+//})
 // Initialize Calendar
 renderCalendar();
