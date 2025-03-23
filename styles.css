@@ -149,7 +149,7 @@ button {
 }
 
 .remove-task {
-    background: red;
+    background: #007BFF;
     color: white;
     border: none;
     padding: 3px 5px;
