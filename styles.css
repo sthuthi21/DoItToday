@@ -18,6 +18,12 @@ h1, h2 {
     margin-bottom: 10px;
 }
 
+#calendarDays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 columns for a week */
+    gap: 5px;
+}
+
 #taskSection {
     margin-bottom: 20px;
 }
@@ -64,6 +70,13 @@ h1, h2 {
     grid-template-columns: repeat(7, 1fr);
     gap: 5px;
 }
+
+.day-names {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
 
 .day {
     padding: 10px;
@@ -126,3 +139,20 @@ button {
     cursor: pointer;
     border-radius: 5px;
 }
+
+.day-name {
+    text-align: center;
+    font-weight: bold;
+    background: #ddd;
+    padding: 10px 0;
+    border-radius: 5px;
+}
+
+.remove-task {
+    background: red;
+    color: white;
+    border: none;
+    padding: 3px 5px;
+    cursor: pointer;
+    border-radius: 3px;
+  }

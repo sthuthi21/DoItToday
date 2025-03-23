@@ -110,6 +110,30 @@ function markTaskCompleted(dateKey, task) {
     renderCalendar(); // Ensure the color updates after task completion
 }
 
+function renderDailyTasks() {
+    taskList.innerHTML = "";
+    dailyTasks.forEach((task) => {
+      let taskItem = document.createElement("li");
+      let taskText = document.createElement("span");
+      taskText.textContent = task;
+  
+      let removeBtn = document.createElement("button");
+      removeBtn.textContent = "Remove";
+      removeBtn.classList.add("remove-task");
+      removeBtn.addEventListener("click", () => removeTask(task));
+  
+      taskItem.appendChild(taskText);
+      taskItem.appendChild(removeBtn);
+      taskList.appendChild(taskItem);
+    });
+  }
+  
+  function removeTask(taskText) {
+    dailyTasks = dailyTasks.filter((task) => task !== taskText);
+    localStorage.setItem("dailyTasks", JSON.stringify(dailyTasks));
+    renderDailyTasks();
+  }
+
 // Add Daily Task
 addTaskBtn.addEventListener("click", () => {
     let taskText = taskInput.value.trim();
@@ -122,10 +146,10 @@ addTaskBtn.addEventListener("click", () => {
 });
 
 // Render Daily Tasks
-function renderDailyTasks() {
+/*function renderDailyTasks() {
     taskList.innerHTML = dailyTasks.map(task => `<li>${task}</li>`).join("");
     
-}
+}*/
 
 // Close modal
 closeModal.addEventListener("click", () => taskModal.style.display = "none");
